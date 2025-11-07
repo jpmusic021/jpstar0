@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6365864767932560">
+    <title>J JP STAR - Your Music Universe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6365864767932560"
+     crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZEHPRQLEX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Default consent state
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+      
+      gtag('js', new Date());
+      gtag('config', 'G-QZEHPRQLEX');
+
+      // Function to grant all consent
+      function allConsentGranted() {
+        gtag('consent', 'update', {
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #e50914; /* Netflix Red-like color for branding */
+            --secondary-color: #b20710; /* Darker red for hover states */
+            --accent-color: #46d369; /* Green accent for success states */
+            --background-color: #0a0a0a;
+            --surface-color: #141414;
+            --surface-light: #1a1a1a;
+            --surface-lighter: #252525;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --text-tertiary: #808080;
+            --gradient-1: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+            --gradient-2: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(229, 9, 20, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .form-input {
+            background-color: var(--surface-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+            background-color: var(--surface-lighter);
+        }
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .slide-in {
+            animation: slideInFromLeft 0.5s ease-out forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Hero Section Styles */
+        #hero-section {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        #hero-section .slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+        #hero-section .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+        }
+        
+        #hero-section .slide.active {
+            opacity: 1;
+        }
+
+        #hero-section .main-focus-text h1 {
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 0px 2px 20px rgba(0,0,0,0.7);
+            letter-spacing: 0.05em;
+        }
+
+        /* Enhanced Music Card Styles */
+        .music-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--surface-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .music-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .music-card:hover::before {
+            opacity: 1;
+        }
+
+        .music-card .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+
+        .music-card:hover .play-overlay {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Enhanced Form Styles */
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--surface-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface-lighter);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Enhanced Search Bar */
+        .search-container {
+            position: relative;
+            max-width: 400px;
+        }
+
+        .search-container input {
+            padding-left: 3rem;
+            border-radius: 50px;
+            background: var(--surface-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-container .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+        }
+
+        /* Enhanced Navigation */
+        .nav-item {
+            position: relative;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background-color: var(--surface-light);
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary {
+            background-color: var(--surface-light);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-lighter);
+        }
+
+        .btn-success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #3cb851;
+        }
+
+        /* Enhanced Admin Panel */
+        .admin-panel {
+            background: var(--surface-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .admin-header {
+            background: var(--gradient-1);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        /* Enhanced Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface-lighter);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .toast.error {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Enhanced Category Pills */
+        .category-pill {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: var(--surface-light);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-pill:hover {
+            background: var(--surface-lighter);
+            border-color: var(--primary-color);
+        }
+
+        .category-pill.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Enhanced Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Enhanced Stats Card */
+        .stats-card {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Enhanced Hero Text */
+        .hero-subtitle {
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Enhanced Music Player Controls */
+        .player-controls {
+            background: var(--surface-color);
+            border-radius: 50px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .player-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-light);
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .player-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .player-btn.primary {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .player-btn.primary:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Enhanced Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: var(--surface-light);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 30%;
+            transition: width 0.1s linear;
+        }
+
+        /* Enhanced Volume Slider */
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            background: var(--surface-light);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 70%;
+            transition: width 0.1s linear;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main Container -->
+    <div id="app-container" class="min-h-screen">
+        
+        <!-- Slide-out Menu -->
+        <div id="slide-out-menu" class="fixed top-0 left-0 h-full w-72 bg-black bg-opacity-95 backdrop-blur-md z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+            <div class="p-6">
+                <a href="#" class="text-3xl font-bold text-white tracking-wider nav-link mb-8 block" data-page="home">
+                   <span class="text-red-600">J</span> JP <span class="text-red-600">STAR</span>
+                </a>
+                <nav class="flex flex-col space-y-4">
+                    <a href="#" class="nav-item text-gray-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium nav-link" data-page="home">Home</a>
+                     <div class="relative">
+                        <button id="category-button-menu" class="w-full text-left text-gray-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium nav-item">Category</button>
+                        <div id="category-dropdown-menu" class="hidden pl-4 mt-2 space-y-2">
+                             <!-- Categories will be populated by JS -->
+                        </div>
+                    </div>
+                    <a href="#" class="nav-item text-gray-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium nav-link" data-page="adminLogin">Admin</a>
+                </nav>
+            </div>
+             <button id="close-menu-button" class="absolute top-5 right-5 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+        </div>
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            
+            <!-- Home Page -->
+            <section id="home-page" class="page fade-in">
+                
+                <!-- Hero Section -->
+                <section id="hero-section">
+                     <div class="hero-slider">
+                        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop');"></div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop');"></div>
+                    </div>
+
+                    <!-- Top Bar: Hamburger & Socials -->
+                    <div class="absolute top-0 left-0 right-0 z-30 flex justify-between items-center p-6 text-white">
+                        <button id="hamburger-button" class="p-2 rounded-lg bg-black bg-opacity-30 backdrop-blur-sm">
+                            <i data-lucide="menu" class="w-8 h-8"></i>
+                        </button>
+                        <div class="flex items-center space-x-6">
+                            <a href="#" class="hover:text-gray-300 transition-colors p-2 rounded-lg bg-black bg-opacity-30 backdrop-blur-sm"><i data-lucide="soundcloud" class="w-6 h-6"></i></a>
+                            <a href="#" class="hover:text-gray-300 transition-colors p-2 rounded-lg bg-black bg-opacity-30 backdrop-blur-sm"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                            <a href="#" class="hover:text-gray-300 transition-colors p-2 rounded-lg bg-black bg-opacity-30 backdrop-blur-sm"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                            <a href="#" class="hover:text-gray-300 transition-colors p-2 rounded-lg bg-black bg-opacity-30 backdrop-blur-sm"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Centered Text -->
+                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white p-4 main-focus-text">
+                        <h1 class="font-bold text-7xl md:text-9xl mb-2 hero-title">J JP STAR</h1>
+                        <p class="hero-subtitle tracking-[0.2em] font-semibold mb-4 text-gray-200">MUSIC & VIDEO PLATFORM</p>
+                        <p class="text-sm text-gray-400 tracking-widest">HIP HOP / EDM / GUJARATI / CHILL OUT</p>
+                    </div>
+                </section>
+
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                        <h1 id="page-title" class="text-3xl font-bold">Featured Music</h1>
+                        <div class="search-container w-full md:w-auto">
+                            <span class="search-icon">
+                                <i data-lucide="search" class="w-5 h-5"></i>
+                            </span>
+                            <input type="text" id="search-bar" placeholder="Search music, artists..." class="w-full form-input text-white focus:outline-none">
+                        </div>
+                    </div>
+                    
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button class="category-pill active" data-category="all">All</button>
+                        <button class="category-pill" data-category="Hip Hop">Hip Hop</button>
+                        <button class="category-pill" data-category="Mashup">Mashup</button>
+                        <button class="category-pill" data-category="Gujarati">Gujarati</button>
+                        <button class="category-pill" data-category="Chillout">Chillout</button>
+                        <button class="category-pill" data-category="Hindi">Hindi</button>
+                        <button class="category-pill" data-category="EDM">EDM</button>
+                        <button class="category-pill" data-category="Dance">Dance</button>
+                        <button class="category-pill" data-category="Pop">Pop</button>
+                        <button class="category-pill" data-category="Rock">Rock</button>
+                    </div>
+                    
+                    <div id="music-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <!-- Music cards will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Individual Content Page -->
+            <section id="content-page" class="page hidden fade-in py-16">
+                <!-- Content will be injected here by JavaScript -->
+            </section>
+
+            <!-- Admin Login Page -->
+            <section id="admin-login-page" class="page hidden fade-in py-16">
+                <div class="max-w-md mx-auto mt-10 admin-panel">
+                    <div class="admin-header">
+                        <h2 class="text-2xl font-bold text-center">Admin Login</h2>
+                    </div>
+                    <div class="admin-content">
+                        <form id="admin-login-form">
+                            <div class="form-group">
+                                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                                <input type="password" id="password" class="mt-1 block w-full form-input rounded-md shadow-sm" required>
+                            </div>
+                            <p id="login-error" class="text-red-500 text-sm mb-4 hidden">Invalid password.</p>
+                            <button type="submit" class="w-full btn btn-primary text-white font-bold">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Panel Page -->
+            <section id="admin-panel-page" class="page hidden fade-in py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-3xl font-bold">Admin Panel</h2>
+                        <button id="logout-btn" class="btn btn-secondary">
+                            <i data-lucide="log-out" class="w-5 h-5"></i>
+                            Logout
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Dashboard -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 stats-grid">
+                        <div class="stats-card">
+                            <div class="stats-number" id="total-music">0</div>
+                            <div class="stats-label">Total Music</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number" id="total-plays">0</div>
+                            <div class="stats-label">Total Plays</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number" id="total-downloads">0</div>
+                            <div class="stats-label">Downloads</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number" id="total-categories">0</div>
+                            <div class="stats-label">Categories</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Add/Edit Music Form -->
+                        <div class="lg:col-span-1 admin-panel">
+                            <div class="admin-header">
+                                <h3 id="form-title" class="text-xl font-semibold">Add New Music</h3>
+                            </div>
+                            <div class="admin-content">
+                                <form id="music-form" class="space-y-4">
+                                    <input type="hidden" id="edit-id">
+                                    <div class="form-group">
+                                        <label for="title" class="block text-sm font-medium">Title</label>
+                                        <input type="text" id="title" class="mt-1 w-full form-input rounded-md" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="singer" class="block text-sm font-medium">Singer/Artist</label>
+                                        <input type="text" id="singer" class="mt-1 w-full form-input rounded-md" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="youtubeId" class="block text-sm font-medium">YouTube ID or Full Link</label>
+                                        <input type="text" id="youtubeId" class="mt-1 w-full form-input rounded-md" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gdriveLink" class="block text-sm font-medium">Google Drive Link (MP3)</label>
+                                        <input type="url" id="gdriveLink" class="mt-1 w-full form-input rounded-md" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thumbnail" class="block text-sm font-medium">Thumbnail Image URL</label>
+                                        <input type="url" id="thumbnail" class="mt-1 w-full form-input rounded-md" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="block text-sm font-medium">Description</label>
+                                        <textarea id="description" rows="3" class="mt-1 w-full form-input rounded-md" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="block text-sm font-medium">Category</label>
+                                        <select id="category" class="mt-1 w-full form-input rounded-md" required>
+                                            <!-- Options populated by JS -->
+                                        </select>
+                                    </div>
+                                    <div class="flex space-x-4">
+                                       <button type="submit" id="submit-btn" class="flex-1 btn btn-primary text-white font-bold">Add Music</button>
+                                       <button type="button" id="cancel-btn" class="flex-1 btn btn-secondary hidden">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Music List -->
+                        <div class="lg:col-span-2 admin-panel">
+                            <div class="admin-header">
+                                <h3 class="text-xl font-semibold">Manage Content</h3>
+                            </div>
+                            <div class="admin-content">
+                                <div class="mb-4 flex items-center gap-4">
+                                    <div class="search-container flex-1">
+                                        <span class="search-icon">
+                                            <i data-lucide="search" class="w-5 h-5"></i>
+                                        </span>
+                                        <input type="text" id="admin-search" placeholder="Search music..." class="w-full form-input text-white focus:outline-none">
+                                    </div>
+                                    <button id="refresh-btn" class="btn btn-secondary">
+                                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div id="admin-music-list" class="space-y-4 max-h-[60vh] overflow-y-auto">
+                                    <!-- List populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 border-t border-gray-800 mt-12">
+            <div class="container mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+                Copyright © 2024 J JP STAR. All Rights Reserved.
+            </div>
+        </footer>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span id="toast-message">Link copied to clipboard!</span>
+        </div>
+
+    </div>
+    
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="fixed bottom-0 inset-x-0 bg-surface-color bg-opacity-90 backdrop-blur-sm p-4 text-white z-50 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-300">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <button id="accept-consent" class="btn btn-primary text-white font-bold text-sm">Accept</button>
+                <button id="decline-consent" class="btn btn-secondary text-white font-bold text-sm">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, deleteDoc, serverTimestamp, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDge0o0osrFIuZ_2UCXHgWHNb8FHTjZYlA",
+            authDomain: "jayujpmusic021.firebaseapp.com",
+            projectId: "jayujpmusic021",
+            storageBucket: "jayujpmusic021.firebasestorage.app",
+            messagingSenderId: "221003116171",
+            appId: "1:221003116171:web:32f9632dd1e05ffba22e8e",
+            measurementId: "G-QZEHPRQLEX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        signInAnonymously(auth).catch(error => console.error("Anonymous sign-in failed:", error));
+        
+        // Firestore collection reference
+        const musicCollection = collection(db, 'music');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // --- DATA ---
+            const categories = ["Hip Hop", "Mashup", "Gujarati", "Chillout", "Hindi", "EDM", "Dance", "Pop", "Rock"];
+            let musicData = []; // This will be populated from Firestore
+            
+            // --- DOM ELEMENTS ---
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const musicGrid = document.getElementById('music-grid');
+            const contentPage = document.getElementById('content-page');
+            const pageTitle = document.getElementById('page-title');
+            const adminLoginForm = document.getElementById('admin-login-form');
+            const musicForm = document.getElementById('music-form');
+            const categoryDropdownMenu = document.getElementById('category-dropdown-menu');
+            const categoryButtonMenu = document.getElementById('category-button-menu');
+            const categorySelect = document.getElementById('category');
+            const searchBar = document.getElementById('search-bar');
+            const adminSearch = document.getElementById('admin-search');
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const slideOutMenu = document.getElementById('slide-out-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const logoutBtn = document.getElementById('logout-btn');
+            const refreshBtn = document.getElementById('refresh-btn');
+            const categoryPills = document.querySelectorAll('.category-pill');
+            
+            // --- STATE ---
+            let currentCategory = 'all';
+            let isAdminLoggedIn = false;
+            let editingId = null;
+            let searchTerm = '';
+
+            // --- FUNCTIONS ---
+            const showToast = (message, type = 'success') => {
+                toastMessage.textContent = message;
+                toast.className = `toast ${type}`;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            };
+
+            const openMenu = () => {
+                slideOutMenu.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+            };
+
+            const closeMenu = () => {
+                slideOutMenu.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+            };
+
+            const showPage = (pageId) => {
+                window.scrollTo(0,0);
+                pages.forEach(page => page.classList.add('hidden'));
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.remove('hidden');
+                    activePage.classList.add('fade-in');
+                }
+                closeMenu();
+            };
+            
+            const renderMusicGrid = (data, title = "Featured Music") => {
+                musicGrid.innerHTML = '';
+                pageTitle.textContent = title;
+                if(data.length === 0){
+                    musicGrid.innerHTML = `<p class="col-span-full text-center text-gray-400">No music found. Add some from Admin Panel.</p>`;
+                    return;
+                }
+                data.forEach(music => {
+                    const card = document.createElement('div');
+                    card.className = 'music-card card';
+                    card.dataset.id = music.id;
+                    card.innerHTML = `
+                        <div class="relative">
+                            <img src="${music.thumbnail}" alt="${music.title}" class="w-full h-40 object-cover">
+                            <div class="play-overlay">
+                                <div class="player-btn primary">
+                                    <i data-lucide="play" class="w-6 h-6"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-md truncate text-white">${music.title}</h3>
+                            <p class="text-sm text-gray-400">${music.singer}</p>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        renderContentPage(music.id);
+                        showPage('content-page');
+                    });
+                    musicGrid.appendChild(card);
+                });
+                lucide.createIcons();
+            };
+
+            const renderContentPage = (id) => {
+                const music = musicData.find(m => m.id == id);
+                if (!music) return;
+                
+                contentPage.innerHTML = `
+                    <div class="max-w-6xl mx-auto container px-4 sm:px-6 lg:px-8">
+                        <a href="#" class="nav-link text-gray-300 hover:text-white inline-flex items-center gap-2 mb-8" data-page="home"><i data-lucide="arrow-left"></i> Back to Home</a>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-2">
+                                <div class="aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden">
+                                    <iframe class="w-full h-[50vh] rounded-lg shadow-xl" src="https://www.youtube.com/embed/${music.youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <h1 class="text-4xl font-extrabold mb-2 text-white">${music.title}</h1>
+                                <p class="text-lg text-gray-300 mb-4">${music.singer}</p>
+                                <p class="text-gray-400 mb-6">${music.description}</p>
+                                <div class="flex flex-wrap items-center gap-4">
+                                    <a href="${music.gdriveLink}" target="_blank" class="btn btn-primary text-white font-bold">
+                                        <i data-lucide="download" class="w-5 h-5"></i>
+                                        Download MP3
+                                    </a>
+                                     <button class="btn btn-success">
+                                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                        Share on WhatsApp
+                                    </button>
+                                    <button class="btn btn-secondary copy-link">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                        Copy Link
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-1">
+                                <div class="card p-6">
+                                    <h3 class="text-xl font-semibold mb-4">Music Player</h3>
+                                    <div class="mb-6">
+                                        <img src="${music.thumbnail}" alt="${music.title}" class="w-full rounded-lg mb-4">
+                                        <div class="player-controls mb-4">
+                                            <div class="player-btn">
+                                                <i data-lucide="skip-back" class="w-5 h-5"></i>
+                                            </div>
+                                            <div class="player-btn primary">
+                                                <i data-lucide="play" class="w-6 h-6"></i>
+                                            </div>
+                                            <div class="player-btn">
+                                                <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="progress-bar mb-4">
+                                            <div class="progress-fill"></div>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <div class="volume-slider">
+                                                <div class="volume-fill"></div>
+                                            </div>
+                                            <div class="player-btn">
+                                                <i data-lucide="volume-2" class="w-5 h-5"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-t border-gray-700 pt-4">
+                                        <h4 class="font-semibold mb-2">Details</h4>
+                                        <div class="space-y-2 text-sm">
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-400">Category:</span>
+                                                <span>${music.category}</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span>3:45</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-400">Released:</span>
+                                                <span>2024</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                contentPage.querySelector('.nav-link').addEventListener('click', e => {
+                    e.preventDefault();
+                    showPage('home-page');
+                });
+
+                contentPage.querySelector('.copy-link').addEventListener('click', () => {
+                    navigator.clipboard.writeText(window.location.href)
+                        .then(() => showToast('Link copied to clipboard!'))
+                        .catch(err => showToast('Failed to copy link.', 'error'));
+                });
+                
+                contentPage.querySelector('.btn-success').addEventListener('click', () => {
+                    const url = encodeURIComponent(window.location.href);
+                    const text = encodeURIComponent(`Check out this track: ${music.title} by ${music.singer}`);
+                    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+                });
+                lucide.createIcons();
+            };
+
+            const populateCategories = () => {
+                categoryDropdownMenu.innerHTML = '';
+                categorySelect.innerHTML = '';
+                categories.forEach(cat => {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.className = 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md';
+                    a.textContent = cat;
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentCategory = cat;
+                        filterMusic();
+                        
+                        // Update active pill
+                        categoryPills.forEach(pill => {
+                            pill.classList.remove('active');
+                            if (pill.dataset.category === cat) {
+                                pill.classList.add('active');
+                            }
+                        });
+                        
+                        showPage('home-page');
+                    });
+                    categoryDropdownMenu.appendChild(a);
+
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.textContent = cat;
+                    categorySelect.appendChild(option);
+                });
+            };
+            
+            const renderAdminList = () => {
+                const listContainer = document.getElementById('admin-music-list');
+                listContainer.innerHTML = '';
+                if (musicData.length === 0) {
+                     listContainer.innerHTML = '<p class="text-center text-gray-400">No music to manage yet.</p>';
+                     return;
+                }
+                
+                const filteredData = adminSearch.value 
+                    ? musicData.filter(m => 
+                        m.title.toLowerCase().includes(adminSearch.value.toLowerCase()) ||
+                        m.singer.toLowerCase().includes(adminSearch.value.toLowerCase())
+                      )
+                    : musicData;
+                    
+                filteredData.forEach(music => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center justify-between bg-gray-700 p-3 rounded-md';
+                    item.innerHTML = `
+                        <div class="flex items-center gap-4">
+                            <img src="${music.thumbnail}" class="w-12 h-12 object-cover rounded-md">
+                            <div>
+                                <p class="font-semibold text-white">${music.title}</p>
+                                <p class="text-sm text-gray-400">${music.singer}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                           <button class="edit-btn p-2 rounded-full hover:bg-gray-600" data-id="${music.id}"><i data-lucide="pencil" class="w-4 h-4 text-blue-400"></i></button>
+                           <button class="delete-btn p-2 rounded-full hover:bg-gray-600" data-id="${music.id}"><i data-lucide="trash-2" class="w-4 h-4 text-red-500"></i></button>
+                        </div>
+                    `;
+                    listContainer.appendChild(item);
+                });
+
+                // Add event listeners for edit/delete buttons
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.currentTarget.dataset.id;
+                        const musicToEdit = musicData.find(m => m.id == id);
+                        if(musicToEdit) {
+                           editingId = id;
+                           document.getElementById('edit-id').value = id;
+                           document.getElementById('title').value = musicToEdit.title;
+                           document.getElementById('singer').value = musicToEdit.singer;
+                           document.getElementById('youtubeId').value = musicToEdit.youtubeId;
+                           document.getElementById('gdriveLink').value = musicToEdit.gdriveLink;
+                           document.getElementById('thumbnail').value = musicToEdit.thumbnail;
+                           document.getElementById('description').value = musicToEdit.description;
+                           document.getElementById('category').value = musicToEdit.category;
+                           document.getElementById('form-title').textContent = "Edit Music";
+                           document.getElementById('submit-btn').textContent = "Update Music";
+                           document.getElementById('cancel-btn').classList.remove('hidden');
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                         if(confirm('Are you sure you want to delete this item?')){
+                            const id = e.currentTarget.dataset.id;
+                            const musicDocRef = doc(db, 'music', id);
+                            try {
+                                await deleteDoc(musicDocRef);
+                                showToast('Item deleted successfully!');
+                                // onSnapshot will auto-update UI
+                            } catch (error) {
+                                console.error("Error deleting document: ", error);
+                                showToast("Error deleting item.", 'error');
+                            }
+                         }
+                    });
+                });
+                lucide.createIcons();
+            };
+            
+            const updateStats = () => {
+                document.getElementById('total-music').textContent = musicData.length;
+                document.getElementById('total-categories').textContent = categories.length;
+                // Simulate other stats
+                document.getElementById('total-plays').textContent = Math.floor(Math.random() * 10000) + 1000;
+                document.getElementById('total-downloads').textContent = Math.floor(Math.random() * 5000) + 500;
+            };
+            
+            const resetForm = () => {
+                editingId = null;
+                musicForm.reset();
+                document.getElementById('edit-id').value = '';
+                document.getElementById('form-title').textContent = "Add New Music";
+                document.getElementById('submit-btn').textContent = "Add Music";
+                document.getElementById('cancel-btn').classList.add('hidden');
+            };
+            
+            const extractYouTubeID = (url) => {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                const match = url.match(regExp);
+                return (match && match[2].length === 11) ? match[2] : url;
+            };
+            
+            const filterMusic = () => {
+                let filteredData = musicData;
+                
+                // Filter by category
+                if (currentCategory !== 'all') {
+                    filteredData = filteredData.filter(music => music.category === currentCategory);
+                }
+                
+                // Filter by search term
+                if (searchTerm) {
+                    filteredData = filteredData.filter(music => 
+                        music.title.toLowerCase().includes(searchTerm) ||
+                        music.singer.toLowerCase().includes(searchTerm) ||
+                        music.category.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                renderMusicGrid(filteredData, currentCategory === 'all' ? 'Featured Music' : `${currentCategory} Music`);
+            };
+
+            // --- EVENT LISTENERS ---
+            hamburgerButton.addEventListener('click', openMenu);
+            closeMenuButton.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+            logoutBtn.addEventListener('click', () => {
+                isAdminLoggedIn = false;
+                showPage('home-page');
+                showToast('Logged out successfully!');
+            });
+            refreshBtn.addEventListener('click', () => {
+                renderAdminList();
+                updateStats();
+                showToast('Dashboard refreshed!');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = e.currentTarget.dataset.page;
+                    if(pageId === 'home') {
+                        showPage('home-page');
+                    } else if (pageId === 'adminLogin') {
+                        if (isAdminLoggedIn) showPage('admin-panel-page');
+                        else showPage('admin-login-page');
+                    }
+                });
+            });
+
+            categoryButtonMenu.addEventListener('click', () => {
+                categoryDropdownMenu.classList.toggle('hidden');
+            });
+            
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    currentCategory = pill.dataset.category;
+                    
+                    // Update active pill
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    
+                    filterMusic();
+                });
+            });
+            
+            adminLoginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+                if (password === 'jayu143') {
+                    isAdminLoggedIn = true;
+                    showPage('admin-panel-page');
+                    renderAdminList();
+                    updateStats();
+                    document.getElementById('login-error').classList.add('hidden');
+                    showToast('Login successful!');
+                } else {
+                    document.getElementById('login-error').classList.remove('hidden');
+                }
+            });
+            
+            musicForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const musicDetails = {
+                    title: document.getElementById('title').value,
+                    singer: document.getElementById('singer').value,
+                    youtubeId: extractYouTubeID(document.getElementById('youtubeId').value),
+                    gdriveLink: document.getElementById('gdriveLink').value,
+                    thumbnail: document.getElementById('thumbnail').value,
+                    description: document.getElementById('description').value,
+                    category: document.getElementById('category').value,
+                };
+
+                try {
+                    if(editingId){
+                        // Update existing
+                        const musicDocRef = doc(db, 'music', editingId);
+                        await updateDoc(musicDocRef, musicDetails);
+                        showToast('Music updated successfully!');
+                    } else {
+                        // Add new
+                        await addDoc(musicCollection, { ...musicDetails, createdAt: serverTimestamp() });
+                        showToast('Music added successfully!');
+                    }
+                    resetForm();
+                    // onSnapshot will handle UI update automatically
+                } catch (error) {
+                    console.error("Error saving document: ", error);
+                    showToast("Error saving music.", 'error');
+                }
+            });
+            
+            document.getElementById('cancel-btn').addEventListener('click', resetForm);
+
+            searchBar.addEventListener('input', (e) => {
+                searchTerm = e.target.value.toLowerCase();
+                filterMusic();
+            });
+            
+            adminSearch.addEventListener('input', () => {
+                renderAdminList();
+            });
+
+            // --- HERO SLIDER LOGIC ---
+            const heroSlider = () => {
+                const slides = document.querySelectorAll('#hero-section .slide');
+                if (!slides.length) return;
+                
+                let currentSlide = 0;
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 4500);
+            };
+
+            // --- CONSENT BANNER LOGIC ---
+            const consentBanner = document.getElementById('consent-banner');
+            const acceptBtn = document.getElementById('accept-consent');
+            const declineBtn = document.getElementById('decline-consent');
+
+            if (!localStorage.getItem('consentGiven')) {
+                consentBanner.classList.remove('hidden');
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                allConsentGranted(); // This function is in the head script tag
+                localStorage.setItem('consentGiven', 'true');
+                consentBanner.classList.add('hidden');
+                showToast("Thank you for accepting!");
+            });
+
+            declineBtn.addEventListener('click', () => {
+                localStorage.setItem('consentGiven', 'false');
+                consentBanner.classList.add('hidden');
+            });
+
+
+            // --- INITIALIZATION ---
+            
+            // Real-time listener for music data from Firestore
+            const q = query(musicCollection, orderBy('createdAt', 'desc'));
+            onSnapshot(q, (snapshot) => {
+                musicData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Add sample music data if no data exists
+                if (musicData.length === 0) {
+                    addSampleMusic();
+                } else {
+                    filterMusic(); // Initial render
+                    if(isAdminLoggedIn) {
+                        renderAdminList(); // Update admin list if open
+                        updateStats();
+                    }
+                }
+            });
+
+            heroSlider();
+            populateCategories();
+            showPage('home-page');
+        });
+
+        // Function to add sample music data
+        async function addSampleMusic() {
+            const sampleMusicData = [
+                {
+                    title: "Mojila Re Mashup 2024",
+                    singer: "DJ JJP",
+                    youtubeId: "dQw4w9WgXcQ",
+                    gdriveLink: "https://drive.google.com/file/d/1sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+                    description: "Latest Gujarati mashup hits of 2024 with DJ JJP special mix",
+                    category: "Mashup"
+                },
+                {
+                    title: "Chill Vibes - Study Music",
+                    singer: "Lo-Fi Masters",
+                    youtubeId: "jfKfPfyJRdk",
+                    gdriveLink: "https://drive.google.com/file/d/2sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop",
+                    description: "Perfect chill out music for studying and relaxation",
+                    category: "Chillout"
+                },
+                {
+                    title: "Garba Special 2024",
+                    singer: "Various Artists",
+                    youtubeId: "LXb3EKWsInQ",
+                    gdriveLink: "https://drive.google.com/file/d/3sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1516223725357-60f4d380b22a?q=80&w=500&auto=format&fit=crop",
+                    description: "Best Garba and Dandiya songs for Navratri 2024",
+                    category: "Gujarati"
+                },
+                {
+                    title: "Hip Hop Beats 2024",
+                    singer: "Rapper JJ",
+                    youtubeId: "YQHsXMglC9A",
+                    gdriveLink: "https://drive.google.com/file/d/4sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=500&auto=format&fit=crop",
+                    description: "Latest hip hop beats and rap songs",
+                    category: "Hip Hop"
+                },
+                {
+                    title: "EDM Festival Mix",
+                    singer: "DJ Star",
+                    youtubeId: "9RZpL8Gh4g",
+                    gdriveLink: "https://drive.google.com/file/d/5sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+                    description: "Electronic Dance Music festival compilation",
+                    category: "EDM"
+                },
+                {
+                    title: "Bollywood Romantic Hits",
+                    singer: "Various Artists",
+                    youtubeId: "8UVJR4J8B6I",
+                    gdriveLink: "https://drive.google.com/file/d/6sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=500&auto=format&fit=crop",
+                    description: "Collection of romantic Bollywood songs",
+                    category: "Hindi"
+                },
+                {
+                    title: "Dance Floor Hits",
+                    singer: "Dance Crew",
+                    youtubeId: "7KXYTtXgWjQ",
+                    gdriveLink: "https://drive.google.com/file/d/7sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop",
+                    description: "Ultimate dance floor playlist",
+                    category: "Dance"
+                },
+                {
+                    title: "Pop Sensation 2024",
+                    singer: "Pop Stars",
+                    youtubeId: "6JQXjPkEeC0",
+                    gdriveLink: "https://drive.google.com/file/d/8sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop",
+                    description: "Latest pop hits of 2024",
+                    category: "Pop"
+                },
+                {
+                    title: "Rock Legends",
+                    singer: "Rock Band",
+                    youtubeId: "5LXCbWjjh4Y",
+                    gdriveLink: "https://drive.google.com/file/d/9sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop",
+                    description: "Classic rock hits from legendary artists",
+                    category: "Rock"
+                },
+                {
+                    title: "Gujarati DJ Mix 2024",
+                    singer: "DJ KJP",
+                    youtubeId: "4KXbWjjh4Y3",
+                    gdriveLink: "https://drive.google.com/file/d/10sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+                    description: "Special Gujarati DJ mix for parties and celebrations",
+                    category: "Gujarati"
+                },
+                {
+                    title: "Study Focus Music",
+                    singer: "Focus Masters",
+                    youtubeId: "3JXbWjjh4Y4",
+                    gdriveLink: "https://drive.google.com/file/d/11sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop",
+                    description: "Background music for concentration and study",
+                    category: "Chillout"
+                },
+                {
+                    title: "Hip Hop Underground",
+                    singer: "Underground JJ",
+                    youtubeId: "2KXbWjjh4Y5",
+                    gdriveLink: "https://drive.google.com/file/d/12sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=500&auto=format&fit=crop",
+                    description: "Underground hip hop beats and rap",
+                    category: "Hip Hop"
+                },
+                {
+                    title: "EDM Paradise",
+                    singer: "Paradise DJ",
+                    youtubeId: "1KXbWjjh4Y6",
+                    gdriveLink: "https://drive.google.com/file/d/13sample/view",
+                    thumbnail: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+                    description: "Ultimate EDM paradise experience",
+                    category: "EDM"
+                }
+            ];
+
+            try {
+                for (const music of sampleMusicData) {
+                    await addDoc(musicCollection, { ...music, createdAt: serverTimestamp() });
+                }
+                showToast('Sample music added successfully!');
+            } catch (error) {
+                console.error("Error adding sample music: ", error);
+                showToast("Error adding sample music.", 'error');
+            }
+        }
+    </script>
+</body>
+</html>
